@@ -42,8 +42,8 @@ begin
     --instanciation pc_reg_in =2
     E_CLK <= '0';
 
-    E_npc <= (1=>'1', others =>'0');
-    E_npc_fw_br <= (4=>'1', others => '0');
+    E_npc <= (2=>'1', others =>'0');
+    E_npc_fw_br <= (3=>'1', others => '0');
     E_PCSrc_ER <= '1';
     E_Bpris_EX <= '0';
     E_GEL_LI <= '1';
@@ -66,6 +66,16 @@ begin
     wait for clkpulse;
     E_CLK <= '1';
     -- pc_reg_out = 2
+
+    wait for clkpulse;
+    E_CLK <= '0';
+
+    E_GEL_LI <= '1';
+    E_PCSrc_ER <= '0';
+    E_Bpris_EX <= '0';
+
+    wait for clkpulse;
+    E_CLK <= '1';
 
     wait for clkpulse;
     wait;
