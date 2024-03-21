@@ -8,7 +8,8 @@ mem.vhd \
 proc.vhd \
 reg_bank.vhd \
 etages.vhd \
-test_fetch.vhd
+test_fetch.vhd \
+test_DE.vhd
 
 # Cible par défaut
 all: test
@@ -16,11 +17,11 @@ all: test
 # Règle pour construire le fichier de test
 test:
 	$(VHDL_COMPILER) -a $(VHDL_FILES)
-	$(VHDL_COMPILER) -e test_fetch
-	$(VHDL_COMPILER) -r test_fetch --vcd=test_fetch.vcd
+	$(VHDL_COMPILER) -e test_DE
+	$(VHDL_COMPILER) -r test_DE --vcd=test_DE.vcd
 
 gtkwave:
-	gtkwave test_fetch.vcd
+	gtkwave test_DE.vcd
 
 # Règle pour nettoyer les fichiers générés
 clean:

@@ -64,7 +64,7 @@ architecture etageDE_arch of etageDE is
   signal sigOp1, sigOp2: std_logic_vector(3 downto 0);
 begin
   
-  sigOp1 <= i_DE(19 downto 16) when RegSrc(0) = '0' else conv_std_logic_vector(15, 0);
+  sigOp1 <= i_DE(19 downto 16) when RegSrc(0) = '0' else conv_std_logic_vector(15, 4);
   sigOp2 <= i_DE(3 downto 0) when RegSrc(1) = '0' else i_DE(15 downto 12);
 
   Op3_DE <= i_DE(15 downto 12);
@@ -77,8 +77,6 @@ begin
 
   ext: entity work.extension
     port map(i_DE(23 downto 0), immSrc, extImm);
-
-
  end entity
 
 -- -------------------------------------------------
