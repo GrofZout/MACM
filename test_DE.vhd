@@ -45,17 +45,21 @@ test_DE : entity work.etageDE
 P_TEST: process
 begin
     E_CLK <= '0';
-    -- add R0, R2, R3
-    --I_DE <= 0000 00 0 0100 0 0001 0000 00000000 0001
-    i_DE<="00000011000011101000000100001111";
-
-    Op3_ER<="0001";
-
-    WD_ER<="10000000000000000000000000000000";
-
-    pc_plus_4<="00000000000000000000000000000001";
 
     Init <= '1';
+
+
+    -- add R0, R2, R3
+    --I_DE <= 0000 00 0 0100 0 0000 0010 00000000 0011
+    i_DE<="00000000100000000010000000000011";
+
+    -- Adresse dans laquelle on écrit
+    -- On regardera sur gtkwave si ça abien écrit dans l'adresse.
+    Op3_ER<="0011";
+
+    WD_ER<="00000000000000000000000000000101";
+
+    pc_plus_4<="00000000000000000000000000000100";
 
     RegWr<='1';
 
@@ -67,13 +71,17 @@ begin
     wait for clkpulse;
     E_CLK <= '1';
 
+    Init <='0';
 
-    RegSrc <= "11";
+
+    RegSrc <= "00";
 
 
 
     wait for clkpulse;
     E_CLK <= '0';
+
+    immSrc <= "01";
 
 
     wait for clkpulse;
@@ -82,6 +90,8 @@ begin
 
     wait for clkpulse;
     E_CLK <= '0';
+
+    RegSrc <= "11";
 
     wait for clkpulse;
     E_CLK <= '1';

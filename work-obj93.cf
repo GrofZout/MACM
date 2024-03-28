@@ -1,53 +1,62 @@
 v 4
-file . "test_DE.vhd" "9e10116a29ab3279f14cf7f7875bfd7911d8e2e3" "20240327134811.913":
-  entity test_de at 4( 31) + 0 on 159;
-  architecture behavior of test_de at 13( 191) + 0 on 160;
-file . "combi.vhd" "e625e5375f12fdffa57c9ea826769b457ca68d3f" "20240327134811.871":
-  entity fulladd1b at 6( 100) + 0 on 116;
-  architecture arche_full_add of fulladd1b at 17( 276) + 0 on 117;
-  entity addcomplex at 24( 427) + 0 on 118;
-  architecture arch_add_complex of addcomplex at 36( 679) + 0 on 119;
-  entity alu at 54( 1054) + 0 on 120;
-  architecture arch_alu of alu at 70( 1389) + 0 on 121;
-  entity extension at 108( 2320) + 0 on 122;
-  architecture arch_ext of extension at 120( 2577) + 0 on 123;
-file . "mem.vhd" "aaf2837cfc31ea820fbf0b89533c1ad5f062f5b0" "20240327134811.881":
-  entity imem at 5( 86) + 0 on 124;
-  architecture behave of imem at 12( 313) + 0 on 125;
-  entity inst_mem at 64( 1873) + 0 on 126;
-  architecture arch_inst_mem of inst_mem at 76( 2083) + 0 on 127;
-  entity dmem at 87( 2296) + 0 on 128;
-  architecture behave of dmem at 96( 2558) + 0 on 129;
-  entity data_mem at 119( 3137) + 0 on 130;
-  architecture arch_data_mem of data_mem at 133( 3379) + 0 on 131;
-file . "proc.vhd" "496dabd8dc8af8433ad5ad42466e88b03d7b58de" "20240327134811.884":
-  entity datapath at 5( 80) + 0 on 132;
-  architecture datapath_arch of datapath at 19( 553) + 0 on 133;
-file . "reg_bank.vhd" "6ba0f93b170cd55fc76bd67eacafc721bd0d420d" "20240327134811.897":
-  package bus_mux_pkg at 1( 0) + 0 on 134;
-  entity reg32 at 13( 289) + 0 on 135;
-  architecture arch_reg of reg32 at 25( 529) + 0 on 136;
-  entity reg32sync at 47( 1000) + 0 on 137;
-  architecture arch_reg_sync of reg32sync at 59( 1244) + 0 on 138;
-  entity reg4 at 82( 1722) + 0 on 139;
-  architecture arch_reg of reg4 at 94( 1959) + 0 on 140;
-  entity reg2 at 116( 2425) + 0 on 141;
-  architecture arch_reg of reg2 at 128( 2662) + 0 on 142;
-  entity reg1 at 150( 3127) + 0 on 143;
-  architecture arch_reg of reg1 at 162( 3326) + 0 on 144;
-  entity registerbank at 185( 3722) + 0 on 145;
-  architecture arch_reg_bank of registerbank at 207( 4300) + 0 on 146;
-file . "etages.vhd" "f05ce07e636916e32fabf5699bce9fff69589945" "20240327134811.908":
-  entity etagefe at 5( 64) + 0 on 147;
-  architecture etagefe_arch of etagefe at 18( 340) + 0 on 148;
-  entity etagede at 47( 1026) + 1 on 149;
-  architecture etagede_arch of etagede at 63( 1459) + 0 on 150;
-  entity etageex at 89( 2064) + 2 on 151;
-  architecture etageex_arch of etageex at 104( 2549) + 2 on 152;
-  entity etageme at 130( 3246) + 2 on 153;
-  architecture etageme_arch of etageme at 146( 3645) + 2 on 154;
-  entity etageer at 160( 3956) + 0 on 155;
-  architecture etageer_arch of etageer at 175( 4320) + 0 on 156;
-file . "test_fetch.vhd" "4e4e3c96c216cd66026ef31f7cfab442ffcf44d6" "20240327134811.910":
-  entity test_fetch at 4( 31) + 0 on 157;
-  architecture behavior of test_fetch at 13( 197) + 0 on 158;
+file . "test_RE.vhd" "cd41e06cb932ed42eab2ac75544627f3a4bb4fab" "20240328133833.015":
+  entity test_re at 4( 31) + 0 on 474;
+  architecture behavior of test_re at 13( 191) + 0 on 475;
+file . "test_fetch.vhd" "4e4e3c96c216cd66026ef31f7cfab442ffcf44d6" "20240328133833.005":
+  entity test_fetch at 4( 31) + 0 on 472;
+  architecture behavior of test_fetch at 13( 197) + 0 on 473;
+file . "etages.vhd" "f05ce07e636916e32fabf5699bce9fff69589945" "20240328133832.994":
+  entity etagefe at 5( 64) + 0 on 462;
+  architecture etagefe_arch of etagefe at 18( 340) + 0 on 463;
+  entity etagede at 47( 1026) + 1 on 464;
+  architecture etagede_arch of etagede at 63( 1459) + 0 on 465;
+  entity etageex at 89( 2064) + 2 on 466;
+  architecture etageex_arch of etageex at 104( 2549) + 2 on 467;
+  entity etageme at 130( 3246) + 2 on 468;
+  architecture etageme_arch of etageme at 146( 3645) + 2 on 469;
+  entity etageer at 160( 3956) + 0 on 470;
+  architecture etageer_arch of etageer at 175( 4320) + 0 on 471;
+file . "reg_bank.vhd" "6ba0f93b170cd55fc76bd67eacafc721bd0d420d" "20240328133832.946":
+  package bus_mux_pkg at 1( 0) + 0 on 449;
+  entity reg32 at 13( 289) + 0 on 450;
+  architecture arch_reg of reg32 at 25( 529) + 0 on 451;
+  entity reg32sync at 47( 1000) + 0 on 452;
+  architecture arch_reg_sync of reg32sync at 59( 1244) + 0 on 453;
+  entity reg4 at 82( 1722) + 0 on 454;
+  architecture arch_reg of reg4 at 94( 1959) + 0 on 455;
+  entity reg2 at 116( 2425) + 0 on 456;
+  architecture arch_reg of reg2 at 128( 2662) + 0 on 457;
+  entity reg1 at 150( 3127) + 0 on 458;
+  architecture arch_reg of reg1 at 162( 3326) + 0 on 459;
+  entity registerbank at 185( 3722) + 0 on 460;
+  architecture arch_reg_bank of registerbank at 207( 4300) + 0 on 461;
+file . "proc.vhd" "496dabd8dc8af8433ad5ad42466e88b03d7b58de" "20240328133832.890":
+  entity datapath at 5( 80) + 0 on 447;
+  architecture datapath_arch of datapath at 19( 553) + 0 on 448;
+file . "mem.vhd" "aaf2837cfc31ea820fbf0b89533c1ad5f062f5b0" "20240328133832.882":
+  entity imem at 5( 86) + 0 on 439;
+  architecture behave of imem at 12( 313) + 0 on 440;
+  entity inst_mem at 64( 1873) + 0 on 441;
+  architecture arch_inst_mem of inst_mem at 76( 2083) + 0 on 442;
+  entity dmem at 87( 2296) + 0 on 443;
+  architecture behave of dmem at 96( 2558) + 0 on 444;
+  entity data_mem at 119( 3137) + 0 on 445;
+  architecture arch_data_mem of data_mem at 133( 3379) + 0 on 446;
+file . "combi.vhd" "e625e5375f12fdffa57c9ea826769b457ca68d3f" "20240328133832.836":
+  entity fulladd1b at 6( 100) + 0 on 431;
+  architecture arche_full_add of fulladd1b at 17( 276) + 0 on 432;
+  entity addcomplex at 24( 427) + 0 on 433;
+  architecture arch_add_complex of addcomplex at 36( 679) + 0 on 434;
+  entity alu at 54( 1054) + 0 on 435;
+  architecture arch_alu of alu at 70( 1389) + 0 on 436;
+  entity extension at 108( 2320) + 0 on 437;
+  architecture arch_ext of extension at 120( 2577) + 0 on 438;
+file . "test_DE.vhd" "179fe089dd9ddeaa6f27adf6a6f9ccf2efdd2359" "20240328125729.812":
+  entity test_de at 4( 31) + 0 on 294;
+  architecture behavior of test_de at 13( 191) + 0 on 295;
+file . "test_EX.vhd" "7702ee0a330a103192c0e11e4bb5244f45111fcd" "20240328131544.183":
+  entity test_ex at 4( 31) + 0 on 384;
+  architecture behavior of test_ex at 13( 191) + 0 on 385;
+file . "test_ME.vhd" "d3e02db88ca1f9552cc704050446f1607607fdaa" "20240328133126.742":
+  entity test_me at 4( 31) + 0 on 429;
+  architecture behavior of test_me at 13( 191) + 0 on 430;
