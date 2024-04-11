@@ -10,8 +10,8 @@ entity Decodeur is
   port(
     instr : in std_logic_vector(31 downto 0);
     PCSrc, RegWr, MemToReg, MemWr, Branch, CCWr, AluSrc  : out std_logic;
-    AluCtrl, ImmSrc, RegSrc : out std_logic_vector(1 downto 0)
-    Cond : out std_logic_vector(3 downto 0);
+    AluCtrl, ImmSrc, RegSrc : out std_logic_vector(1 downto 0);
+    Cond : out std_logic_vector(3 downto 0)
 );
 end entity;
 
@@ -37,10 +37,10 @@ begin
 
     RegWr <= '0' when (instr(27 downto 26)="10") or (instr(27 downto 26)="01" and instr(20)='0') or (instr(27 downto 26)="00" and instr(25)='0' and instr(20)='1') else '1';
 
-    RegSrc(0) <= '1' when instr(27 downto 26)="10" else '0'
+    RegSrc(0) <= '1' when instr(27 downto 26)="10" else '0';
     RegSrc(1) <= '0' when instr(27 downto 26)="00" and instr(25)='0' else '1' when instr(27 downto 26)="01" and instr(20)='0';
 
-    PCSrc <= '1' when instr(15 downto 12)="1111" else 0 when instr(27 downto 26)/="10";
+    PCSrc <= '1' when instr(15 downto 12)="1111" else '0' when instr(27 downto 26)/="10";
 
     CCWr <= '1' when instr(27 downto 26)="00" and instr(20)='1' else '0';
 
