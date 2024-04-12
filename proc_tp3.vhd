@@ -65,10 +65,12 @@ begin
     port map (
     i_DE => i_DE, WD_ER => Res_RE, pc_plus_4 => pc_plus_4,
     Op3_ER => Op3_RE_out_t,
-    RegSrc => RegSrc, immSrc => ImmSrc_t,
+    RegSrc => RegSrc, immSrc => immSrc,
     RegWr => RegWR_RE, clk => clk, Init => init,
     Reg1 => a1_DE, Reg2 => a2_DE, Op3_DE => Op3_DE,
     Op1 => Op1_DE, Op2 => Op2_DE, extImm => extImm_DE);
+
+
 
 
 
