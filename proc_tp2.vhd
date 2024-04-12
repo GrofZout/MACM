@@ -38,6 +38,13 @@ begin
 
   instr_DE <= i_DE;
 
+  Decodeur : entity work.Decodeur
+    port map(
+      instr => i_DE,
+      PCSrc, RegWr, MemToReg, MemWr, Branch, CCWr, AluSrc,
+      AluCtrl, ImmSrc, RegSrc,
+      Cond);
+
   DE : entity work.etageDE  
     port map (
     i_DE => i_DE, WD_ER => Res_RE, pc_plus_4 => pc_plus_4,
@@ -46,6 +53,9 @@ begin
     RegWr => RegWR, clk => clk, Init => init,
     Reg1 => a1_DE, Reg2 => a2_DE, Op3_DE => Op3_DE,
     Op1 => Op1_DE, Op2 => Op2_DE, extImm => extImm_DE);
+
+
+
 
 
   -- EX
@@ -89,6 +99,15 @@ begin
   
   a1 <= a1_EX;
   a2 <= a2_EX;
+
+
+  Cond : entity work.Cond
+    port map(
+      CCWr_EX,
+      Cond, CC_EX, CC,
+      CondEx,
+      CCp);
+
 
 
   EX : entity work.etageEX 

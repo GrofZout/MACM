@@ -6,11 +6,11 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
 -- Definition de l'entite
-entity test_deco is
-end test_deco;
+entity test_cond is
+end test_cond;
 
 -- Definition de l'architecture
-architecture behavior of test_deco is
+architecture behavior of test_cond is
 
 constant TIMEOUT 	: time := 300 ns; -- timeout de la simulation
 
@@ -20,50 +20,46 @@ constant clkpulse : Time := 5 ns; -- 1/2 periode horloge
 -- definition de types
 
 -- definition de ressources externes
-signal instr : std_logic_vector(31 downto 0);
-signal PCSrc, RegWr, MemToReg, MemWr, Branch, CCWr, AluSrc  : std_logic;
-signal AluCtrl, ImmSrc, RegSrc : std_logic_vector(1 downto 0);
-signal Cond : std_logic_vector(3 downto 0);
+signal CCWr_EX : std_logic;
+signal Cond, CC_EX, CC : std_logic_vector(3 downto 0);
+signal CondEx : std_logic;
+signal CCp : std_logic_vector(3 downto 0);
 
 begin
 
 
 ------------------------------------------------------------------
 -- instanciation et mapping du composant fifo
-test_deco : entity work.Decodeur  
-    port map (instr,
-        PCSrc, RegWr, MemToReg, MemWr, Branch, CCWr, AluSrc, 
-        AluCtrl, ImmSrc, RegSrc, 
-        Cond);
+test_cond : entity work.Cond  
+    port map (CCWr_EX,
+        Cond, CC_EX, CC, 
+        CondEx, 
+        CCp);
 
 ------------------------------------------------------------------
 
 P_TEST: process
 begin
-    --add sans S
-    instr <= x"e0810002";
     
+    Cond <= "0000";
+
+    CC_EX <= "1011";
+
+    CCWr_EX <= '1';
+
+    CC <= "0000";
 
     wait for clkpulse;
     
-
-    instr <= x"e081f002";
-
-
-
-    wait for clkpulse;
-
-    --add avec S
-    
-    instr <= x"e296500a";
-
+    CC_EX <= "0100";
 
 
     wait for clkpulse;
 
-    --Branch
 
-    instr <= x"eafffffd";
+
+    wait for clkpulse;
+
     
 
 

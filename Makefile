@@ -10,7 +10,8 @@ reg_bank.vhd \
 etages.vhd \
 decodeur.vhd \
 condition.vhd \
-test_decodeur.vhd
+test_cond.vhd \
+proc_tp2.vhd
 
 # Cible par défaut
 all: test
@@ -18,11 +19,11 @@ all: test
 # Règle pour construire le fichier de test
 test:
 	$(VHDL_COMPILER) -a $(VHDL_FILES)
-	$(VHDL_COMPILER) -e test_deco
-	$(VHDL_COMPILER) -r test_deco --vcd=test_deco.vcd
+	$(VHDL_COMPILER) -e test_cond
+	$(VHDL_COMPILER) -r test_cond --vcd=test_cond.vcd
 
 gtkwave:
-	gtkwave test_ME.vcd
+	gtkwave test_cond.vcd
 
 # Règle pour nettoyer les fichiers générés
 clean:
