@@ -42,6 +42,9 @@ test_ME : entity work.etageME
 
 P_TEST: process
 begin
+
+    --Aussi ici tests un peu random
+
     E_CLK <= '0';
 
     MemWR_Mem <= '1';

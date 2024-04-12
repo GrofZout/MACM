@@ -44,6 +44,8 @@ test_EX : entity work.etageEX
 
 P_TEST: process
 begin
+
+    --Test un peu random pour voir si les output sont correct
     
 
     Op1_EX <= "00000000000000000000000000000101";

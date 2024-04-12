@@ -21,10 +21,10 @@ constant clkpulse : Time := 5 ns; -- 1/2 periode horloge
 -- definition de types
 
 -- definition de ressources externes
-signal eclk,  einit,EALUSrc_EX, EMemWr_Mem, EPCSrc_ER, EBpris_EX, EGel_LI, EGel_DI, ERAZ_DI, ERegWR, EClr_EX, EMemToReg_RE : std_logic;
-signal ERegSrc, EEA_EX, EEB_EX, eimmSrc, EALUCtrl_EX : std_logic_vector(1 downto 0);
-signal einstr_DE: std_logic_vector(31 downto 0);
-signal ea1, ea2, ereg1_de, ereg2_de,ECC,EOp3_out_EX,EOp3_out_ME,EOp3_out_RE: std_logic_vector(3 downto 0);
+signal eclk,  init,EALUSrc_EX, EMemWr_Mem, PCSrc_ER, Bpris_EX, Gel_LI, Gel_DI, RAZ_DI, RegWr, Clr_EX, MemToReg_RE : std_logic;
+signal RegSrc, EA_EX, EB_EX, immSrc, ALUCtrl_EX : std_logic_vector(1 downto 0);
+signal instr_DE: std_logic_vector(31 downto 0);
+signal a1, a2, reg1_de, reg2_de,CC,Op3_out_EX,Op3_out_ME,Op3_out_RE: std_logic_vector(3 downto 0);
 
 
 begin
@@ -33,91 +33,94 @@ begin
 ------------------------------------------------------------------
 -- instanciation et mapping du composant fifo
 test_P : entity work.dataPath(dataPath_arch)
-        port map (eclk,  einit,EALUSrc_EX, EMemWr_Mem, EPCSrc_ER, EBpris_EX, EGel_LI, EGel_DI, ERAZ_DI, ERegWR, EClr_EX, EMemToReg_RE,
-                ERegSrc, EEA_EX, EEB_EX, eimmSrc, EALUCtrl_EX,
-                einstr_DE,
-                ea1,ea2,ereg1_de,ereg2_de,ECC ,EOp3_out_EX,EOp3_out_ME,EOp3_out_RE);
+        port map (eclk,  init,EALUSrc_EX, EMemWr_Mem, PCSrc_ER, Bpris_EX, Gel_LI, Gel_DI, RAZ_DI, RegWr, Clr_EX, MemToReg_RE,
+                RegSrc, EA_EX, EB_EX, immSrc, ALUCtrl_EX,
+                instr_DE,
+                a1,a2,reg1_de,reg2_de,CC ,Op3_out_EX,Op3_out_ME,Op3_out_RE);
 
 ------------------------------------------------------------------
 
 P_TEST: process
 begin
-    einit <= '1';
+
+    --J'utilise ce fichier de test pour le proc tp1 et tp2. Je pense que les deux versions marchent, je n'ai pas eu le temps de faire le TP3
+    init <= '1';
 
     wait for clkpulse;
 
-    EPCSrc_ER <= '0';
-    EBpris_EX <= '0';
-    EGel_LI <= '1';
-    EGel_DI <= '1';
-    ERAZ_DI <= '1';
-    EClr_EX <= '1';
-    eimmSrc <= "10";
-    EALUCtrl_EX <= "00";
+
+    EB_EX <= "00";
+    RegSrc <= "10";
+    RegWr <= '1';
+    init <= '0';
+    PCSrc_ER <= '0';
+    Bpris_EX <= '0';
+    immSrc <= "10";
+    ALUCtrl_EX <= "00";
     EALUSrc_EX <= '0';
     EMemWr_Mem <= '0';
-    EMemToReg_RE <= '0';
-    EEA_EX <= "00";
-    EEB_EX <= "00";
-    ERegSrc <= "10";
-    ERegWr <= '1';
-    einit <= '0';
+    MemToReg_RE <= '0';
+    EA_EX <= "00";
+    Gel_LI <= '1';
+    Gel_DI <= '1';
+    RAZ_DI <= '1';
+    Clr_EX <= '1';
 
     wait for clkpulse;
 
-    ERegSrc <= "10";
-    eimmSrc <= "00";
+    RegSrc <= "10";
+    immSrc <= "00";
 
 
-    wait for clkpulse*2;
-
-
-
-    EALUSrc_EX <= '1';
-    EALUCtrl_EX <= "00";
-
-
-
-    wait for clkpulse*2;
-
-
-
-    wait for clkpulse*2;
-
-
-
-    wait for clkpulse*2;
+    wait for clkpulse;
 
 
 
     EALUSrc_EX <= '1';
-    EEA_EX <=  "10";
+    ALUCtrl_EX <= "00";
 
-    wait for clkpulse*2;
+
+
+    wait for clkpulse;
+
+
+
+    wait for clkpulse;
+
+
+
+    wait for clkpulse;
+
+
+
+    EALUSrc_EX <= '1';
+    EA_EX <=  "10";
+
+    wait for clkpulse;
 
 
     EALUSrc_EX <= '0';
-    EEA_EX <=  "00";
+    EA_EX <=  "00";
     EMemWr_Mem <= '1';
 
 
-    wait for clkpulse*2;
+    wait for clkpulse;
 
 
     EMemWr_Mem <= '0';
 
-    wait for clkpulse*2;
+    wait for clkpulse;
 
 
 
-    wait for clkpulse*2;
+    wait for clkpulse;
 
 
-    wait for clkpulse*2;
+    wait for clkpulse;
 
-    wait for clkpulse*2;
+    wait for clkpulse;
 
-    EMemToReg_RE <= '1';
+    MemToReg_RE <= '1';
 
     wait for clkpulse;
     wait;
